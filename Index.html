@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Tasks</title>
+</head>
+<body>
+
+<!-- Existing elements -->
+<ul id="myList">
+  <li>Task 1</li>
+  <li>Task 2</li>
+</ul>
+
+<div id="container">
+  <p>Paragraph inside div</p>
+</div>
+
+<div id="deleteContainer">
+  <p>Item A</p>
+  <p>Item B</p>
+  <p>Item C</p>
+</div>
+
+<ul id="list1">
+  <li id="moveItem">Move Me</li>
+</ul>
+
+<ul id="list2"></ul>
+
+<script>
+/* Task 1: To-Do Header */
+let heading = document.createElement("h1");
+heading.textContent = "My To-Do List";
+document.body.appendChild(heading);
+
+/* Task 2: Priority Insertion */
+let ul = document.getElementById("myList");
+let li = document.createElement("li");
+li.textContent = "Urgent Task";
+ul.insertBefore(li, ul.firstElementChild);
+
+/* Task 3: Dynamic Deletion */
+let button = document.createElement("button");
+button.textContent = "Delete Last Item";
+document.body.appendChild(button);
+
+let deleteDiv = document.getElementById("deleteContainer");
+
+button.onclick = function() {
+  if (deleteDiv.lastElementChild) {
+    deleteDiv.removeChild(deleteDiv.lastElementChild);
+  }
+};
+
+/* Task 4: Element Cloning & Insertion */
+let span = document.createElement("span");
+span.textContent = " New! ";
+
+let container = document.getElementById("container");
+let para = container.querySelector("p");
+
+container.insertBefore(span, para);
+
+/* Task 5: Element Recycling */
+let list1 = document.getElementById("list1");
+let list2 = document.getElementById("list2");
+
+let item = document.getElementById("moveItem");
+
+// remove from list1
+list1.removeChild(item);
+
+// append to list2
+list2.append(item);
+
+</script>
+
+</body>
+  </html>
